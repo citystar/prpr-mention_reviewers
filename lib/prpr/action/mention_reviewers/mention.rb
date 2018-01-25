@@ -3,7 +3,7 @@ module Prpr
     module MentionReviewers
       class Mention < Base
         def call
-          Publisher::Adapter::Base.broadcast message
+          Publisher::Adapter::Base.broadcast message if from.login != requested_reviewer.login
         end
 
         private
